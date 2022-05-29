@@ -25,7 +25,7 @@ function allList(){
 }
 
 function activeListcheck(event) {
-  arr.forEach((obj) => {
+    JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
     if (
       obj.id === event.target.parentElement.querySelector(".check").value
     ) {
@@ -40,11 +40,8 @@ function completedList() {
     box.style.display = "none"
     activeBox.style.display = "none"
     if(completedBox.style.display == "none") {
-        if(completedBox.childElementCount > 0) {
-            completedBox.style.display = "flex";
-        }
-        else{
     if (arr) {
+        completedBox.innerHTML = ""
         JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
           if (obj.status) {
             completedBox.style.display = "flex";
@@ -78,16 +75,12 @@ function completedList() {
     }
     }
   }
-}
 
 function activeList() {
     box.style.display = "none"
     completedBox.style.display = "none"
     if(activeBox.style.display == "none") {
-        if(activeBox.childElementCount > 0) {
-            activeBox.style.display = "flex";
-        }
-        else{
+        activeBox.innerHTML = ""
     if (arr) {
         JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
           if (!obj.status) {
@@ -122,7 +115,6 @@ function activeList() {
     }
     }
   }
-}	
 
 
 function enterButton(event) {
@@ -134,6 +126,7 @@ function enterButton(event) {
 function appendChilds(event) {
   if (event.target.value === "" || event.target.value === " ") {
   } else {
+      const arr1 = JSON.parse(localStorage.getItem("todos")) || []
     const text = document.createElement("p");
     const div = document.createElement("div");
     const checkButton = document.createElement("button");
@@ -153,9 +146,9 @@ function appendChilds(event) {
     const obj = new Status(event.target.value, false, id);
     checkButton.value = obj.id
     id++
-    arr.push(obj);
+    arr1.push(obj);
     localStorage.setItem("id", JSON.stringify(id));
-    localStorage.setItem("todos", JSON.stringify(arr));
+    localStorage.setItem("todos", JSON.stringify(arr1));
     if (obj.status) {
       checkButton.parentElement.style.backgroundColor = "green";
       checkButton.innerHTML = "-";
@@ -167,8 +160,9 @@ function appendChilds(event) {
   }
 }
 function starterList() {
-  if (arr) {
-    JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
+    const arr1 = JSON.parse(localStorage.getItem("todos"))
+  if (arr1) {
+    arr1.forEach((obj) => {
       if (obj.text) {
         const text = document.createElement("p");
         const checkButton = document.createElement("button");
@@ -201,7 +195,8 @@ function starterList() {
   }
 }
 function checkingIn(event) {
-  arr.forEach((obj) => {
+    const arr1 = JSON.parse(localStorage.getItem("todos"))
+    arr1.forEach((obj) => {
     if (
       event.target.value == obj.id
     ) {
@@ -216,7 +211,7 @@ function checkingIn(event) {
       }
     }
   });
-  localStorage.setItem("todos", JSON.stringify(arr));
+  localStorage.setItem("todos", JSON.stringify(arr1));
 }
 function deleteTask(event) {
         const filtered = JSON.parse(localStorage.getItem("todos")).filter((obj) => {
