@@ -1,6 +1,9 @@
 body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size:125%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-size:100%;
 }
 .box h1{
     font-size:500%;
@@ -28,13 +31,15 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width:50%;
+    width:90%;
+    padding:0.3rem 0rem;
     margin-top: 2rem;
     background-color: rgb(246, 246, 246);
     border-radius: 2rem;
     height:10%;
 }
 .check{
+    font-size: 80%;
     padding: 0.5rem;
     position:absolute;
     left:0.5rem;
@@ -43,7 +48,8 @@ body{
     border-radius: 50%;
 }
 .deleter{
-    padding: 0.5rem;
+    font-size: 80%;
+    padding: 0.3rem;
     position:absolute;
     right:0.5rem;
     border:0;
@@ -72,4 +78,22 @@ body{
 #all{
     padding: 0.5rem 0rem;
     margin-bottom: 0.5rem;
+}
+.button:hover{
+    background-color: rgb(246, 246, 246);
+}
+@media only screen and (min-width: 764px){
+    .center{
+        width:50%;
+    }
+    .center{
+        width:50%;
+        padding:0.5rem 0rem
+    }
+    body{
+        font-size:125%;
+    }
+    .deleter{
+        padding:0.5rem;
+    }
 }

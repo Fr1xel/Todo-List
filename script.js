@@ -45,7 +45,7 @@ function completedList() {
         }
         else{
     if (arr) {
-      arr.forEach((obj) => {
+        JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
           if (obj.status) {
             completedBox.style.display = "flex";
             const text = document.createElement("p");
@@ -89,7 +89,7 @@ function activeList() {
         }
         else{
     if (arr) {
-      arr.forEach((obj) => {
+        JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
           if (!obj.status) {
             activeBox.style.display = "flex";
             const text = document.createElement("p");
@@ -163,11 +163,12 @@ function appendChilds(event) {
       checkButton.parentElement.style.backgroundColor = "red";
       checkButton.innerHTML = "+";
     }
+    event.target.value = "";
   }
 }
 function starterList() {
   if (arr) {
-    arr.forEach((obj) => {
+    JSON.parse(localStorage.getItem("todos")).forEach((obj) => {
       if (obj.text) {
         const text = document.createElement("p");
         const checkButton = document.createElement("button");
